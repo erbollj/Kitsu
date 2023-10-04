@@ -21,11 +21,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
 
@@ -34,6 +34,11 @@ dependencies {
     testImplementation(Dependencies.JUnit.jUnit)
     androidTestImplementation(Dependencies.JUnit.testJUnit)
     implementation(Dependencies.Retrofit.retrofit)
+//    implementation(Dependencies.OkHttp.okHttp)
+//    implementation(Dependencies.OkHttp.bom)
+    implementation(Dependencies.OkHttp.loggingInterceptor)
+    implementation(Dependencies.Paging.runtime)
+    implementation(Dependencies.Koin.koinAndroid)
     implementation(Dependencies.Retrofit.converterGson)
     implementation(project(":domain"))
 

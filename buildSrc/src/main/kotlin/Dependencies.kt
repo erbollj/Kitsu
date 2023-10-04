@@ -67,15 +67,6 @@ object Dependencies {
             "androidx.navigation:navigation-safe-args-gradle-plugin:$version"
     }
 
-    object Hilt {
-        private const val version = "2.41"
-
-        const val android = "com.google.dagger:hilt-android:$version"
-        const val compiler = "com.google.dagger:hilt-compiler:$version"
-        const val plugin = "com.google.dagger.hilt.android"
-        const val gradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$version"
-    }
-
     object Retrofit {
         private const val version = "2.9.0"
 
@@ -87,14 +78,15 @@ object Dependencies {
         private const val version = "5.0.0-alpha.5"
 
         const val bom = "com.squareup.okhttp3:okhttp-bom:$version"
-        const val okHttp = "com.squareup.okhttp3:okhttp"
-        const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor"
+        const val okHttp = "com.squareup.okhttp3:okhttp$version"
+        const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:4.11.0"
     }
 
     object Paging {
-        private const val version = "3.1.1"
+        private const val version = "3.2.1"
 
-        const val runtime = "androidx.paging:paging-runtime-ktx:$version"
+        const val runtime = "androidx.paging:paging-runtime:$version"
+        const val common = "androidx.paging:paging-common-ktx:$version"
     }
 
     object SplashScreen {
@@ -106,8 +98,9 @@ object Dependencies {
     }
 
     object Koin {
-        private const val version = "3.2.0-beta-1"
+        private const val version = "3.1.2"
         const val koinAndroid = "io.insert-koin:koin-android:$version"
+        const val core = "io.insert-koin:koin-core:$version"
 
     }
 

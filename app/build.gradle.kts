@@ -25,12 +25,12 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 
     buildFeatures.viewBinding = true
@@ -42,10 +42,18 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
     implementation(Dependencies.Core.core)
+    implementation(Dependencies.Koin.koinAndroid)
     implementation(Dependencies.UIComponents.appCompat)
     implementation(Dependencies.UIComponents.material)
     implementation(Dependencies.UIComponents.constraintLayout)
-
+    implementation(Dependencies.Navigation.fragment)
+    implementation(Dependencies.Fragment.fragment)
+    implementation(Dependencies.Lifecycle.viewModel)
+    implementation(Dependencies.Lifecycle.runtime)
+    implementation(Dependencies.Lifecycle.liveData)
+    implementation(Dependencies.Navigation.ui)
+    implementation(Dependencies.Paging.runtime)
+    implementation(Dependencies.Glide.glide)
     testImplementation(Dependencies.JUnit.jUnit)
     androidTestImplementation(Dependencies.JUnit.testJUnit)
     androidTestImplementation(Dependencies.Espesso.espresso)
