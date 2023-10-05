@@ -12,7 +12,7 @@ import com.example.kitsuapi.presentation.ui.fragment.manga.MangaFragment
 import com.example.kitsuapi.presentation.ui.fragment.user.UsersFragment
 import com.google.android.material.tabs.TabLayoutMediator
 
-class MainFragment: BaseFragment<FragmentMainBinding, MainViewModel>() {
+class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>() {
 
     override val viewModel: MainViewModel by viewModels()
 
@@ -36,15 +36,15 @@ class MainFragment: BaseFragment<FragmentMainBinding, MainViewModel>() {
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             when (position) {
                 0 -> {
-                    tab.text = "Characters"
+                    tab.text = "Anime"
                 }
 
                 1 -> {
-                    tab.text = "Locations"
+                    tab.text = "Manga"
                 }
 
                 else -> {
-                    tab.text = "Episodes"
+                    tab.text = "Users"
                 }
             }
         }.attach()

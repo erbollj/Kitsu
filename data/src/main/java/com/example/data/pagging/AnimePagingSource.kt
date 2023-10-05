@@ -5,20 +5,20 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.data.model.anime.toModel
 import com.example.data.network.AnimeApi
-import com.example.domain.model.anime.AttributesModel
+import com.example.domain.model.anime.AnimeAttributesModel
 
-class AnimePagingSource (
+class AnimePagingSource(
     private val api: AnimeApi,
     private val limit: Int = 10,
     private val offset: Int = 0
-) : PagingSource<Int, AttributesModel>() {
+) : PagingSource<Int, AnimeAttributesModel>() {
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, AttributesModel> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, AnimeAttributesModel> {
         val position = params.key ?: offset
         return try {
             val response = api.getAnime(limit, position).body()?.data?.map { it.attributes }
             Log.e("ololo", "load: $response")
-            Log.e("ololo", "load: " + api.getAnime(limit, offset).body() )
+            Log.e("ololo", "load: " + api.getAnime(limit, offset).body())
             LoadResult.Page(
                 data = response?.map { it!!.toModel() } ?: emptyList(),
                 prevKey = if (position == offset) null else position - limit,
@@ -29,7 +29,7 @@ class AnimePagingSource (
         }
     }
 
-    override fun getRefreshKey(state: PagingState<Int, AttributesModel>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, AnimeAttributesModel>): Int? {
         val anchorPosition = state.anchorPosition ?: return null
         val page = state.closestPageToPosition(anchorPosition) ?: return null
         return page.prevKey?.plus(1) ?: page.nextKey?.minus(1)

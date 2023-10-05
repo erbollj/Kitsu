@@ -5,16 +5,16 @@ import androidx.paging.PagingData
 import androidx.paging.map
 import com.example.domain.useCase.GetAnimeUseCase
 import com.example.kitsuapi.presentation.base.BaseViewModel
-import com.example.kitsuapi.presentation.model.anime.AttributesUI
+import com.example.kitsuapi.presentation.model.anime.AnimeAttributesUI
 import com.example.kitsuapi.presentation.model.anime.toUI
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class AnimeViewModel(private val getAnimeUseCase: GetAnimeUseCase): BaseViewModel() {
+class AnimeViewModel(private val getAnimeUseCase: GetAnimeUseCase) : BaseViewModel() {
 
     private var _getAnime =
-        MutableStateFlow<PagingData<AttributesUI>>(PagingData.empty())
+        MutableStateFlow<PagingData<AnimeAttributesUI>>(PagingData.empty())
     val getAnime = _getAnime.asStateFlow()
 
     fun getAnime() {

@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class AnimeDto(
     @SerializedName("data")
-    val `data`: List<DataDto>? = listOf(),
+    val `data`: List<AnimeDataDto>? = listOf(),
     @SerializedName("links")
-    val links: LinksDto? = LinksDto(),
+    val links: AnimeLinksDto? = AnimeLinksDto(),
 )

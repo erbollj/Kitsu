@@ -1,0 +1,31 @@
+package com.example.domain.model.manga
+
+data class MangaAttributesModel(
+    val abbreviatedTitles: List<String>? = listOf(),
+    val ageRating: String? = "",
+    val ageRatingGuide: Any? = Any(),
+    val averageRating: String? = "",
+    val canonicalTitle: String? = "",
+    val chapterCount: Int? = 0,
+    val coverImageTopOffset: Int? = 0,
+    val createdAt: String? = "",
+    val description: String? = "",
+    val endDate: String? = "",
+    val favoritesCount: Int? = 0,
+    val mangaType: String? = "",
+    val nextRelease: Any? = Any(),
+    val popularityRank: Int? = 0,
+    val posterImage: MangaPosterImageModel? = MangaPosterImageModel(),
+    val ratingRank: Int? = 0,
+    val serialization: String? = "",
+    val slug: String? = "",
+    val startDate: String? = "",
+    val status: String? = "",
+    val subtype: String? = "",
+    val synopsis: String? = "",
+    val tba: Any? = Any(),
+    val titles: MangaTitlesModel? = MangaTitlesModel(),
+    val updatedAt: String? = "",
+    val userCount: Int? = 0,
+    val volumeCount: Int? = 0
+)

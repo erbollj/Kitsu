@@ -7,16 +7,16 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.kitsuapi.databinding.ItemCardBinding
-import com.example.kitsuapi.presentation.model.anime.AttributesUI
+import com.example.kitsuapi.presentation.model.anime.AnimeAttributesUI
 
-class AnimeAdapter : PagingDataAdapter<AttributesUI, ResultViewHolder>(ResultDiffUtilCallback) {
+class AnimeAdapter : PagingDataAdapter<AnimeAttributesUI, AnimeViewHolder>(ResultDiffUtilCallback) {
 
-    override fun onBindViewHolder(holder: ResultViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AnimeViewHolder, position: Int) {
         getItem(position)?.let { holder.bind(it) }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResultViewHolder {
-        return ResultViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimeViewHolder {
+        return AnimeViewHolder(
             ItemCardBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -25,18 +25,18 @@ class AnimeAdapter : PagingDataAdapter<AttributesUI, ResultViewHolder>(ResultDif
         )
     }
 
-    private object ResultDiffUtilCallback : DiffUtil.ItemCallback<AttributesUI>() {
+    private object ResultDiffUtilCallback : DiffUtil.ItemCallback<AnimeAttributesUI>() {
 
         override fun areItemsTheSame(
-            oldItem: AttributesUI,
-            newItem: AttributesUI
+            oldItem: AnimeAttributesUI,
+            newItem: AnimeAttributesUI
         ): Boolean {
             return oldItem == newItem
         }
 
         override fun areContentsTheSame(
-            oldItem: AttributesUI,
-            newItem: AttributesUI
+            oldItem: AnimeAttributesUI,
+            newItem: AnimeAttributesUI
         ): Boolean {
             return oldItem == newItem
         }
@@ -44,11 +44,12 @@ class AnimeAdapter : PagingDataAdapter<AttributesUI, ResultViewHolder>(ResultDif
     }
 }
 
-class ResultViewHolder(private val binding: ItemCardBinding) :
+class AnimeViewHolder(private val binding: ItemCardBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(position: AttributesUI) {
-        Glide.with(binding.image).load(position.posterImageModel?.original).into(binding.image)
+    fun bind(data: AnimeAttributesUI) {
+        Glide.with(binding.imgPoster).load(data.posterImageModel?.original).into(binding.imgPoster)
+//        binding.txt.text = data.titlesModel!!.en
     }
 
 }

@@ -1,7 +1,6 @@
 package com.example.kitsuapi.presentation.ui.fragment.anime
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.Lifecycle
@@ -13,7 +12,7 @@ import com.example.kitsuapi.presentation.ui.adapters.AnimeAdapter
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class AnimeFragment: BaseFragment<FragmentAnimeBinding, AnimeViewModel>() {
+class AnimeFragment : BaseFragment<FragmentAnimeBinding, AnimeViewModel>() {
 
     override val viewModel: AnimeViewModel by viewModel()
     private val adapter = AnimeAdapter()
@@ -33,7 +32,6 @@ class AnimeFragment: BaseFragment<FragmentAnimeBinding, AnimeViewModel>() {
                 viewModel.getAnime.collect {
                     binding.recycler.adapter = adapter
                     adapter.submitData(it)
-                    Log.e("ololo", "anime: $it")
                 }
             }
         }
