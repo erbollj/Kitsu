@@ -15,6 +15,6 @@ interface AnimeRepo {
      * @param filter Список категорий для фильтрации данных (может быть null).
      * @return Flow с постраничными данными аниме.
      */
-    fun getAnime(filter: List<String>? = emptyList()): Flow<PagingData<AnimeAttributesModel>>
+    fun getAnime(filter: List<String>?): Flow<PagingData<AnimeAttributesModel>>
 
 }

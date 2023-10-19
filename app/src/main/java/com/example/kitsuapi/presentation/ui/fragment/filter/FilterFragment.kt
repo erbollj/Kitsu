@@ -78,8 +78,8 @@ class FilterFragment : BottomSheetDialogFragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.getFilter.collect {
-                    adapter.submitData(it)
                     binding.recycler.adapter = adapter
+                    adapter.submitData(it)
                 }
             }
         }

@@ -27,11 +27,7 @@ class AnimeFragment(
      */
     override fun launchObservers() {
         super.launchObservers()
-        viewModel.getAnime(
-            if (filterAdapter.getListFilter()
-                    .isEmpty()
-            ) emptyList() else filterAdapter.getListFilter()
-        )
+        viewModel.getAnime(filterAdapter.getListFilter())
         viewModel.getAnime.spectatePaging {
             adapter.submitData(it)
         }

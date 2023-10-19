@@ -15,6 +15,6 @@ class GetAnimeUseCase(private val repo: AnimeRepo) {
      * @param filter Список категорий для фильтрации данных (может быть null).
      * @return Flow с постраничными данными аниме.
      */
-    fun getAnime(filter: List<String>? = emptyList()) = repo.getAnime(filter)
+    fun getAnime(filter: List<String>?) = repo.getAnime(filter)
 
 }
