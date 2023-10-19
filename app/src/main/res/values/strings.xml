@@ -3,4 +3,20 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="image">Image</string>
+    <string name="password">password</string>
+    <string name="email">email</string>
+    <string name="login">Login</string>
+    <string name="cancel">Cancel</string>
+    <string name="post">Post</string>
+    <string name="crate_post">Crate Post</string>
+    <string name="write_something">Write Something....</string>
+    <string name="spoiler">Spoiler</string>
+    <string name="nsfw">NSFW</string>
+    <string name="reset">Reset</string>
+    <string name="apply">Apply</string>
+    <string name="erbollj">erbollj</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="skip">Skip</string>
+    <string name="get_started">Get Started</string>
 </resources>

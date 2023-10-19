@@ -1,43 +1,25 @@
 package com.example.kitsuapi.presentation.ui.fragment.user
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
+import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.kitsuapi.R
 import com.example.kitsuapi.databinding.FragmentUsersBinding
 import com.example.kitsuapi.presentation.base.BaseFragment
 import com.example.kitsuapi.presentation.ui.adapters.UsersAdapter
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class UsersFragment : BaseFragment<FragmentUsersBinding, UserViewModel>() {
+class UsersFragment : BaseFragment<FragmentUsersBinding, UserViewModel>(R.layout.fragment_users) {
 
+    override val binding: FragmentUsersBinding by viewBinding(FragmentUsersBinding::bind)
     override val viewModel: UserViewModel by viewModel()
     private val adapter = UsersAdapter()
 
-    override fun inflateViewBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): FragmentUsersBinding {
-        return FragmentUsersBinding.inflate(inflater, container, false)
-    }
-
-    override fun initView() {
+    override fun launchObservers() {
+        super.launchObservers()
         viewModel.getUsers()
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.getUsers.collect {
-                    binding.recycler.adapter = adapter
-                    adapter.submitData(it)
-                }
-            }
+        viewModel.getUsers.spectatePaging {
+            binding.recycler.adapter = adapter
+            adapter.submitData(it)
         }
-    }
-
-    override fun initListener() {
     }
 
 }

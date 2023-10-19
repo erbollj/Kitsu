@@ -50,13 +50,15 @@ class UsersViewHolder(private val binding: ItemUserBinding) :
     fun bind(data: UsersAttributesUI) {
         binding.txtName.text = data.name
         binding.txtFollowers.text = "${data.followersCount} followers"
+
         if (data.avatar?.original == null) {
             Glide.with(binding.imgAvatar)
-                .load("https://static.conft.app/aHR0cHM6Ly9jZG4ua2l0c3VtaW50dS5pby9hc3NldHMvaW1hZ2VzLzk1NTkucG5n")
+                .load("https://static.vecteezy.com/system/resources/previews/004/439/731/original/japanese-kitsune-mask-free-vector.jpg")
                 .into(binding.imgAvatar)
         } else {
             Glide.with(binding.imgAvatar).load(data.avatar.original).into(binding.imgAvatar)
         }
+
     }
 
 }

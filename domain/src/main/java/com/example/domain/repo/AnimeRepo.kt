@@ -4,8 +4,17 @@ import androidx.paging.PagingData
 import com.example.domain.model.anime.AnimeAttributesModel
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * Интерфейс репозитория для работы с данными аниме.
+ */
 interface AnimeRepo {
 
-    fun getAnime(): Flow<PagingData<AnimeAttributesModel>>
+    /**
+     * Получение данных аниме с поддержкой постраничной загрузки.
+     *
+     * @param filter Список категорий для фильтрации данных (может быть null).
+     * @return Flow с постраничными данными аниме.
+     */
+    fun getAnime(filter: List<String>? = emptyList()): Flow<PagingData<AnimeAttributesModel>>
 
 }

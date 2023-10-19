@@ -11,11 +11,11 @@ import kotlinx.coroutines.flow.Flow
 
 class MangaRepoImpl(private val api: MangaApi) : MangaRepo {
 
-    override fun getManga(): Flow<PagingData<MangaAttributesModel>> {
+    override fun getManga(filter: List<String>?): Flow<PagingData<MangaAttributesModel>> {
         return Pager(
             PagingConfig(10),
             pagingSourceFactory = {
-                MangaPagingSource(api)
+                MangaPagingSource(api, filter = filter)
             }).flow
     }
 

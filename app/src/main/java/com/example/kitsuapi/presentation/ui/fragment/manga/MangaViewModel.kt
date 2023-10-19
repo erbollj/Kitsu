@@ -17,9 +17,9 @@ class MangaViewModel(private val getMangaUseCase: GetMangaUseCase) : BaseViewMod
         MutableStateFlow<PagingData<MangaAttributesUI>>(PagingData.empty())
     val getManga = _getManga.asStateFlow()
 
-    fun getManga() {
+    fun getManga(filter: List<String>?) {
         viewModelScope.launch {
-            getMangaUseCase.getAnime().collect {
+            getMangaUseCase.getAnime(filter).collect {
                 _getManga.value = it.map { it.toUI() }
             }
         }

@@ -9,7 +9,14 @@ java {
 }
 
 dependencies {
-    implementation(Dependencies.Kotlin.coroutines)
-    implementation(Dependencies.Paging.common)
-    implementation(Dependencies.Koin.core)
+
+    // Coroutines
+    implementation(libs.coroutines.android)
+
+    // Paging
+    implementation(libs.paging.common)
+
+    // Koin
+    implementation(libs.koin.core)
+
 }

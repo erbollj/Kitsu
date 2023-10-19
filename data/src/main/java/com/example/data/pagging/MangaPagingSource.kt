@@ -8,14 +8,15 @@ import com.example.domain.model.manga.MangaAttributesModel
 
 class MangaPagingSource(
     private val api: MangaApi,
-    private val limit: Int = 20,
-    private val offset: Int = 0
+    private val limit: Int = 10,
+    private val offset: Int = 0,
+    private val filter: List<String>?
 ) : PagingSource<Int, MangaAttributesModel>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MangaAttributesModel> {
         val position = params.key ?: offset
         return try {
-            val response = api.getManga(limit, position).body()?.data?.map { it.attributes }
+            val response = api.getManga(limit, position, filter).body()?.data?.map { it.attributes }
 
             LoadResult.Page(
                 data = response!!.map { it!!.toModel() },
@@ -32,6 +33,7 @@ class MangaPagingSource(
         val page = state.closestPageToPosition(anchorPosition) ?: return null
         return page.prevKey?.plus(1) ?: page.nextKey?.minus(1)
     }
+
 }
 
 

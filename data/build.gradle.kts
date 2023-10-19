@@ -1,14 +1,14 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    id(libs.plugins.agp.library.get().pluginId)
+    id(libs.plugins.jgp.android.get().pluginId)
 }
 
 android {
     namespace = "com.example.data"
-    compileSdk = AndroidConfig.compileSdk
+    compileSdk = config.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = AndroidConfig.minSdk
+        minSdk = config.versions.minSdk.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -34,15 +34,18 @@ android {
 
 dependencies {
 
-    testImplementation(Dependencies.JUnit.jUnit)
-    androidTestImplementation(Dependencies.JUnit.testJUnit)
-    implementation(Dependencies.Retrofit.retrofit)
-//    implementation(Dependencies.OkHttp.okHttp)
-//    implementation(Dependencies.OkHttp.bom)
-    implementation(Dependencies.OkHttp.loggingInterceptor)
-    implementation(Dependencies.Paging.runtime)
-    implementation(Dependencies.Koin.koinAndroid)
-    implementation(Dependencies.Retrofit.converterGson)
     implementation(project(":domain"))
+
+    // Paging
+    implementation(libs.paging.runtime)
+
+    // Koin
+    implementation(libs.koin.android)
+
+    // Retrofit
+    implementation(libs.bundles.retrofitBundle)
+
+    //OkHttpInterceptor
+    implementation(libs.loggingInterceptor.interceptor)
 
 }

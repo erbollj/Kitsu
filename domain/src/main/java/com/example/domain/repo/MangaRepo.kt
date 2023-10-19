@@ -6,6 +6,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface MangaRepo {
 
-    fun getManga(): Flow<PagingData<MangaAttributesModel>>
+    fun getManga(filter: List<String>?): Flow<PagingData<MangaAttributesModel>>
 
 }

@@ -49,7 +49,7 @@ class MangaViewHolder(private val binding: ItemCardBinding) :
 
     fun bind(data: MangaAttributesUI) {
         Glide.with(binding.imgPoster).load(data.posterImage?.original).into(binding.imgPoster)
-//        binding.txt.text = data.titles!!.en
+        binding.txt.text = data.titles!!.en
     }
 
 }
